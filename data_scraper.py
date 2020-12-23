@@ -67,3 +67,5 @@ def etuovi_get_apartments():
         kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link}
         df = df.append(kohde, ignore_index=True)
     print(df)
+
+etuovi_get_apartments()
