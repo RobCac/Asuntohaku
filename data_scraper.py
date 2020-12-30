@@ -6,6 +6,14 @@ from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 
 
+def check_element(id): #takes an element-id and returns true if it can be found
+    try:
+        webdriver.find_element_by_id(id)
+    except:
+        print("No cookie check")
+        return False
+    return True
+
 def etuovi_get_apartments():
     #Reads username and pw for login
     f = open("user.txt","r")
@@ -58,7 +66,6 @@ def etuovi_get_apartments():
         pinta = pinta_ele.text
         kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link}
         df = df.append(kohde, ignore_index=True)
-    df.to_csv('data.csv', header=True)
-    #return df
+    print(df)
 
 etuovi_get_apartments()
