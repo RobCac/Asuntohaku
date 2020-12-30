@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
+import re
 
 
 def etuovi_get_apartments():
@@ -23,8 +24,10 @@ def etuovi_get_apartments():
 
     #wait for cookie popup
     driver.implicitly_wait(10) 
-    driver.find_element_by_id("almacmp-modalConfirmBtn").click()
-
+    try:
+        driver.find_element_by_id("almacmp-modalConfirmBtn").click()
+    except:
+        pass
     #Log in with read credentials
     element = driver.find_element_by_link_text("Kirjaudu")
     element.click()
@@ -50,15 +53,28 @@ def etuovi_get_apartments():
 
     for link in links:
         driver.get(link)
+        print(link)
         osoite_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[1]/div/div[1]/div/div[1]/h1')
         osoite = osoite_ele.text
         vmh_ele = driver.find_element_by_xpath('//*[@id="previousDebtFreePrice"]')
         vmh = vmh_ele.text
         pinta_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[7]/div[2]/span')
         pinta = pinta_ele.text
-        kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link}
+        posti_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[2]/div[2]/ul')
+        postire = re.search(r"\b\d{5}\b", posti_ele.text)
+        try:
+            posti = str(postire.group())
+        except:
+            posti = '00000'
+        
+        print(posti)
+        pinta = pinta.replace(',','.')
+        print(pinta)
+        
+        kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link, 'Postinmr' : posti}
         df = df.append(kohde, ignore_index=True)
-    df.to_csv('data.csv', header=True)
-    #return df
+    df.to_csv('dataactual.csv', header=True, index=False)
+    #return df In the end will just return
+    
 
 etuovi_get_apartments()
