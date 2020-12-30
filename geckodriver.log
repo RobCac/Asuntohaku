@@ -785,3 +785,55 @@ JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1609008607274	geckodriver	INFO	Listening on 127.0.0.1:23719
+1609008610299	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roberto\\AppData\\Local\\Temp\\rust_mozprofileQF2moG"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+Can't find symbol 'eglSetDamageRegionKHR'.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1609008613637	Marionette	INFO	Listening on port 23727
+1609008613936	Marionette	WARN	TLS certificate errors will be ignored for this session
+1609008615929	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+1609008624448	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1609008628016	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008631530	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008635218	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008638433	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008641777	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: https://cdn.almamedia.fi/script/alma-require/2.3.5/require.min.js, line 12: Error: Script error for "https://cdn.almamedia.fi/alma-amd/bows/1.6.0/bows.min.js"
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: https://cdn.almamedia.fi/script/alma-require/2.3.5/require.min.js, line 12: Error: Script error for "https://cdn.almamedia.fi/alma-amd/js-cookie/2.1.3/js-cookie.min.js"
+http://requirejs.org/docs/errors.html#scripterror
+1609008645423	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008649139	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008652481	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008655716	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: https://cdn.almamedia.fi/script/alma-require/2.3.5/require.min.js, line 12: Error: Script error for "https://cdn.almamedia.fi/alma-amd/js-cookie/2.1.3/js-cookie.min.js"
+http://requirejs.org/docs/errors.html#scripterror
+JavaScript error: https://cdn.almamedia.fi/script/alma-require/2.3.5/require.min.js, line 12: Error: Script error for "https://cdn.almamedia.fi/alma-amd/bows/1.6.0/bows.min.js"
+http://requirejs.org/docs/errors.html#scripterror
+1609008659047	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1609008662784	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008665989	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+1609008670848	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008674389	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008677702	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1609008788666	Marionette	INFO	Stopped listening on port 23727
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
