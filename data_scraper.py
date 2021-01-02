@@ -53,7 +53,6 @@ def etuovi_get_apartments():
 
     for link in links:
         driver.get(link)
-        print(link)
         osoite_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[1]/div/div[1]/div/div[1]/h1')
         osoite = osoite_ele.text
         vmh_ele = driver.find_element_by_xpath('//*[@id="previousDebtFreePrice"]')
@@ -67,14 +66,49 @@ def etuovi_get_apartments():
         except:
             posti = '00000'
         
-        print(posti)
         pinta = pinta.replace(',','.')
-        print(pinta)
         
         kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link, 'Postinmr' : posti}
         df = df.append(kohde, ignore_index=True)
     df.to_csv('dataactual.csv', header=True, index=False)
-    #return df In the end will just return
+    driver.close()
+    #return df In the end will just return dataframe?
     
 
-etuovi_get_apartments()
+
+
+def hintakehitys_scraper():
+    df = pd.DataFrame(columns = ['Postinumero', 'Keskineliöhinta', '1v-muutosprosentti', '5v-muutosprosentti'])
+    driver = webdriver.Firefox()
+    driver.get("https://blok.ai/asuinaluevertailu/")
+    driver.implicitly_wait(10) 
+    try:
+        driver.find_element_by_xpath("/html/body/div[4]/div/div/div[2]/form/div/div[1]/button").click()
+    except:
+        pass
+    Values_o = driver.find_elements_by_class_name("odd")
+    Values_e = driver.find_elements_by_class_name("even")
+    for value in Values_o:
+        text = value.text
+        text = text.split(' ')
+        row = {
+            'Postinumero' : str(text[2]),
+            'Keskineliöhinta' : text[-6], 
+            '1v-muuttoprosentti': text[-4],
+            '5v-muuttoprosentti': text[-2]
+            }
+        df = df.append(row, ignore_index= True)
+    for value in Values_e:
+        text = value.text
+        text = text.split(' ')
+        row = {
+            'Postinumero' : str(text[2]),
+            'Keskineliöhinta' : text[-6], 
+            '1v-muuttoprosentti': text[-4],
+            '5v-muuttoprosentti': text[-2]
+            }
+        df = df.append(row, ignore_index= True)
+    df.to_csv('Area_data.csv', header=True, index=False)
+    driver.close()
+#etuovi_get_apartments()
+hintakehitys_scraper()
