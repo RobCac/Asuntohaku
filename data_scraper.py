@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
+import re
 
 
 def etuovi_get_apartments():
@@ -23,8 +24,10 @@ def etuovi_get_apartments():
 
     #wait for cookie popup
     driver.implicitly_wait(10) 
-    driver.find_element_by_id("almacmp-modalConfirmBtn").click()
-
+    try:
+        driver.find_element_by_id("almacmp-modalConfirmBtn").click()
+    except:
+        pass
     #Log in with read credentials
     element = driver.find_element_by_link_text("Kirjaudu")
     element.click()
@@ -56,9 +59,56 @@ def etuovi_get_apartments():
         vmh = vmh_ele.text
         pinta_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[7]/div[2]/span')
         pinta = pinta_ele.text
-        kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link}
+        posti_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[2]/div[2]/ul')
+        postire = re.search(r"\b\d{5}\b", posti_ele.text)
+        try:
+            posti = str(postire.group())
+        except:
+            posti = '00000'
+        
+        pinta = pinta.replace(',','.')
+        
+        kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link, 'Postinmr' : posti}
         df = df.append(kohde, ignore_index=True)
-    df.to_csv('data.csv', header=True)
-    #return df
+    df.to_csv('dataactual.csv', header=True, index=False)
+    driver.close()
+    #return df In the end will just return dataframe?
+    
 
-etuovi_get_apartments()
+
+
+def hintakehitys_scraper():
+    df = pd.DataFrame(columns = ['Postinumero', 'Keskineliöhinta', '1v-muutosprosentti', '5v-muutosprosentti'])
+    driver = webdriver.Firefox()
+    driver.get("https://blok.ai/asuinaluevertailu/")
+    driver.implicitly_wait(10) 
+    try:
+        driver.find_element_by_xpath("/html/body/div[4]/div/div/div[2]/form/div/div[1]/button").click()
+    except:
+        pass
+    Values_o = driver.find_elements_by_class_name("odd")
+    Values_e = driver.find_elements_by_class_name("even")
+    for value in Values_o:
+        text = value.text
+        text = text.split(' ')
+        row = {
+            'Postinumero' : str(text[2]),
+            'Keskineliöhinta' : text[-6], 
+            '1v-muuttoprosentti': text[-4],
+            '5v-muuttoprosentti': text[-2]
+            }
+        df = df.append(row, ignore_index= True)
+    for value in Values_e:
+        text = value.text
+        text = text.split(' ')
+        row = {
+            'Postinumero' : str(text[2]),
+            'Keskineliöhinta' : text[-6], 
+            '1v-muuttoprosentti': text[-4],
+            '5v-muuttoprosentti': text[-2]
+            }
+        df = df.append(row, ignore_index= True)
+    df.to_csv('Area_data.csv', header=True, index=False)
+    driver.close()
+#etuovi_get_apartments()
+hintakehitys_scraper()
