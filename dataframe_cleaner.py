@@ -1,11 +1,12 @@
 import pandas as pd 
 import numpy as np
 # -*- coding: UTF-8 -*-
-df = pd.read_csv('dataactual.csv', dtype= {'Postinmr':str})
-df = df.reindex(columns = df.columns.tolist() + ['Kaupunki'])
-#df['Pinta-ala'] = df['Pinta-ala'].apply(lambda x: x.str.replace(',','.'))
-def data_clean_etu(df):
-    #df['Postinmr'] = df['Postinmr'].astype(str)
+
+def data_clean_etu(df_apart):
+    #df = pd.read_csv('dataactual.csv', dtype= {'Postinmr':str})
+    df = df_apart.reindex(columns = df_apart.columns.tolist() + ['Kaupunki'])
+
+
     for i in range(len(df['Osoite'])):
         splitlist = df.loc[i,'Osoite'].split(',')
         df.loc[i,'Osoite'] = splitlist[0]
@@ -18,6 +19,7 @@ def data_clean_etu(df):
         df.loc[i, 'URL'] = splitlist[0]
         df.loc[i,'Postinmr'] = str(df.loc[i,'Postinmr'])
     df.to_csv('data_clean.csv', header=True)
+    return df
 
 
-data_clean_etu(df)
+#data_clean_etu(df)

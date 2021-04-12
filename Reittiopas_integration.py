@@ -69,9 +69,17 @@ def route_length(apart_adress, home = "Kurtinmäenkuja 2, Espoo::60.178746,24.59
     return home_average_travel, work_average_travel
 
 
+def add_journeys_to_df(df_combined):
+    df_combined.reindex(columns = df_combined.columns.tolist() + ['Reitti töihin'] + ['Reitti Kökkeliin'])
+    #add new columns to the dataframe
+    for index, row in df_combined.iterrows():
+        #Iterate through the columns, using route_length to calculate the traveltimes and adding them to
+        #the dataframe
+        adress_string = row["Osoite"] + ", " + row["Kaupunki"]
+        print("Adding routes from apartment number {s}...".format(s = index +1))
+        df_combined.loc[index, "Reitti Kökkeliin"], df_combined.loc[index, "Reitti töihin"] = route_length(adress_string)
+        print("...done!")
+    return(df_combined)
 
 
-        
-
-
-route_length("valimotie 21, Helsinki")
+#route_length("valimotie 21, Helsinki")

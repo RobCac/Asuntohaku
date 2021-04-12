@@ -55,7 +55,14 @@ def etuovi_get_apartments():
         driver.get(link)
         osoite_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[1]/div/div[1]/div/div[1]/h1')
         osoite = osoite_ele.text
-        vmh_ele = driver.find_element_by_xpath('//*[@id="previousDebtFreePrice"]')
+        try:
+            vmh_ele = driver.find_element_by_xpath('//*[@id="previousDebtFreePrice"]')
+        except:
+            try:
+                vmh_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[4]/div[2]/div/div/div/div/div[1]/div[1]/div[1]/div[2]')
+            except:
+                vmh_ele = 0
+            
         vmh = vmh_ele.text
         pinta_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[7]/div[2]/span')
         pinta = pinta_ele.text
@@ -70,21 +77,25 @@ def etuovi_get_apartments():
         
         kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link, 'Postinmr' : posti}
         df = df.append(kohde, ignore_index=True)
+
+    #Saving to csv, for logging and possible other usage. Later into SQL?    
     df.to_csv('dataactual.csv', header=True, index=False)
     driver.close()
-    #return df In the end will just return dataframe?
+    return df
+    # In the end will just return dataframe?
     
 
 
 
 def hintakehitys_scraper():
-    df = pd.DataFrame(columns = ['Postinumero', 'Keskineliöhinta', '1v-muutosprosentti', '5v-muutosprosentti'])
+    df = pd.DataFrame(columns = ['Postinmr', 'Keskineliöhinta', '1v-muutosprosentti', '5v-muutosprosentti'])
     driver = webdriver.Firefox()
     driver.get("https://blok.ai/asuinaluevertailu/")
     driver.implicitly_wait(10) 
     try:
         driver.find_element_by_xpath("/html/body/div[4]/div/div/div[2]/form/div/div[1]/button").click()
     except:
+        print("no element found")
         pass
     Values_o = driver.find_elements_by_class_name("odd")
     Values_e = driver.find_elements_by_class_name("even")
@@ -92,23 +103,25 @@ def hintakehitys_scraper():
         text = value.text
         text = text.split(' ')
         row = {
-            'Postinumero' : str(text[2]),
-            'Keskineliöhinta' : text[-6], 
-            '1v-muuttoprosentti': text[-4],
-            '5v-muuttoprosentti': text[-2]
+            'Postinmr' : str(text[2]),
+            'Keskineliöhinta' : text[-3], 
+            '1v-muutosprosentti': text[-2],
+            '5v-muutosprosentti': text[-1]
             }
         df = df.append(row, ignore_index= True)
     for value in Values_e:
         text = value.text
         text = text.split(' ')
         row = {
-            'Postinumero' : str(text[2]),
-            'Keskineliöhinta' : text[-6], 
-            '1v-muuttoprosentti': text[-4],
-            '5v-muuttoprosentti': text[-2]
+            'Postinmr' : str(text[2]),
+            'Keskineliöhinta' : text[-3], 
+            '1v-muutosprosentti': text[-2],
+            '5v-muutosprosentti': text[-1]
             }
         df = df.append(row, ignore_index= True)
     df.to_csv('Area_data.csv', header=True, index=False)
+    
     driver.close()
+    return df
 #etuovi_get_apartments()
-hintakehitys_scraper()
+#hintakehitys_scraper()
