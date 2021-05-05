@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import string
 import requests
+import datetime as dt
 
 
 
@@ -12,12 +13,13 @@ def jprint(obj):
 
 def create_query_for_graphQL(api_adress, destination, time = '"07:00:00"'):
     #creates the GraphQLrequest for traveltime between to locations in ReittiopasAPI format
+    check_date = dt.datetime.now()
     query = """
     {{
     plan(
         fromPlace: "{starter}",
         toPlace: "{to}",
-        date: "2021-4-8",
+        date: "{Year}-{Month}-{Day}",
         time: {depart},
         numItineraries: 3,
     ) {{
@@ -26,7 +28,7 @@ def create_query_for_graphQL(api_adress, destination, time = '"07:00:00"'):
         }}
     }}
     }}
-    """.format(starter = str(api_adress), to = str(destination), depart = str(time))
+    """.format(starter = str(api_adress), to = str(destination), Year = check_date.year, Month = check_date.month, Day = check_date.day, depart = str(time))
     return query
 
 
@@ -77,7 +79,10 @@ def add_journeys_to_df(df_combined):
         #the dataframe
         adress_string = row["Osoite"] + ", " + row["Kaupunki"]
         print("Adding routes from apartment number {s}...".format(s = index +1))
-        df_combined.loc[index, "Reitti Kökkeliin"], df_combined.loc[index, "Reitti töihin"] = route_length(adress_string)
+        a, b = route_length(adress_string)
+        print("reitti kökkeliin %s", a)
+        df_combined.loc[index, "Reitti Kökkeliin"], df_combined.loc[index, "Reitti töihin"] = a, b
+        
         print("...done!")
     return(df_combined)
 

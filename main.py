@@ -27,5 +27,5 @@ except:
 df_combined = pd.merge(df_apart, df_hintakeh, on="Postinmr")
 
 df_with_journeys = ri.add_journeys_to_df(df_combined)
-df_with_journeys.to_csv('data_with_journeys.csv', header=True)
+df_with_journeys.to_csv('data_with_journeys.csv', header=True, index = False)
 #In [11]: result = pd.concat([df1, df4], axis=1).reindex(df1.index)
