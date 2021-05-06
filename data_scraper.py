@@ -55,15 +55,20 @@ def etuovi_get_apartments():
         driver.get(link)
         osoite_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[1]/div/div[1]/div/div[1]/h1')
         osoite = osoite_ele.text
+        print("Nyt lisätään: " + osoite)
         try:
             vmh_ele = driver.find_element_by_xpath('//*[@id="previousDebtFreePrice"]')
         except:
             try:
                 vmh_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[4]/div[2]/div/div/div/div/div[1]/div[1]/div[1]/div[2]')
             except:
-                vmh_ele = 0
-            
-        vmh = vmh_ele.text
+                vmh_ele = "0"
+                print(osoite + " Ei onnistunut hinnan tarkistus, lisätty nolla")
+       
+        try:
+            vmh = vmh_ele.text
+        except:
+            vmh = vmh_ele
         pinta_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[7]/div[2]/span')
         pinta = pinta_ele.text
         posti_ele = driver.find_element_by_xpath('/html/body/div[2]/div/div[3]/div/section/div[2]/div/div/div[3]/div[2]/div[3]/div[2]/div[2]/div/div/div/div/div[1]/div[2]/div[2]/ul')
@@ -76,6 +81,8 @@ def etuovi_get_apartments():
         pinta = pinta.replace(',','.')
         
         kohde = {'Osoite' : osoite, 'Vmh' : vmh, 'Pinta-ala' : pinta , 'URL' : link, 'Postinmr' : posti}
+        print("Tämä lisättiin: ")
+        print(kohde)
         df = df.append(kohde, ignore_index=True)
 
     #Saving to csv, for logging and possible other usage. Later into SQL?    
