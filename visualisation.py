@@ -4,14 +4,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def average_price_eval(df, house = all):
+def average_price_eval(df_input, house = all):
     house_square_price = list()
     avg_square_price = list()
     address = list()
+    df = df_input.reindex(columns = df_input.columns.tolist() + ['Neliöhintojen erotus'])
     for i in range(len(df['Osoite'])):
-        address.append(df.loc[i, 'Osoite'])
-        house_square_price.append(round(float(df.loc[i, 'Vmh']) / float(df.loc[i, 'Pinta-ala']), 1))
+        df.loc[i, 'Neliöhintojen erotus'] =int(int(df.loc[i, 'Keskineliöhinta']) - int(df.loc[i, 'Neliöhinta']))
+        address.append(str(df.loc[i, 'Osoite']) + ",  " + str(df.loc[i, 'Postinmr']))
+        house_square_price.append(df.loc[i, 'Neliöhinta'])
         avg_square_price.append(df.loc[i, 'Keskineliöhinta'])
+    print(df)
+    df.sort_values(by=['Neliöhintojen erotus'], inplace = True, ascending=False)
+    print(df)
     x = np.arange(len(address))
     width = 0.35
 
@@ -34,9 +39,10 @@ def average_price_eval(df, house = all):
 
     plt.show()
 
-
-try:
-    df = pd.read_csv('data_with_journeys.csv', dtype= {'Postinmr':str})
-except:    
-    print("Hups")
-average_price_eval(df)
+def vis_tester():
+    try:
+        df = pd.read_csv('data_with_journeys.csv', dtype= {'Postinmr':str})
+    except:    
+        print("Hups")
+    average_price_eval(df)
+vis_tester()

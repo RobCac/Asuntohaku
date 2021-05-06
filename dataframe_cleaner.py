@@ -4,7 +4,7 @@ import numpy as np
 
 def data_clean_etu(df_apart):
     #df = pd.read_csv('dataactual.csv', dtype= {'Postinmr':str})
-    df = df_apart.reindex(columns = df_apart.columns.tolist() + ['Kaupunki'])
+    df = df_apart.reindex(columns = df_apart.columns.tolist() + ['Kaupunki'] + ['Neliöhinta'])
 
 
     for i in range(len(df['Osoite'])):
@@ -18,6 +18,7 @@ def data_clean_etu(df_apart):
         splitlist = df.loc[i, 'URL'].split('?')
         df.loc[i, 'URL'] = splitlist[0]
         df.loc[i,'Postinmr'] = str(df.loc[i,'Postinmr'])
+        df.loc[i, 'Neliöhinta'] = round(float(df.loc[i,'Vmh']) / float(df.loc[i,'Pinta-ala']), 0)
     df.to_csv('data_clean.csv', header=True)
     return df
 

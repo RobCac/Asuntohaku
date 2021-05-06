@@ -1,20 +1,31 @@
-,Osoite,Vmh,Pinta-ala,URL,Postinmr,Kaupunki
-0,Eetinkuja 3 N 56,319000,89.0,https://www.etuovi.com/kohde/q86867,02360, Espoo
-1,Puosunrinne 3,219500,94.0,https://www.etuovi.com/kohde/20292548,02320, Espoo
-2,Merivalkama 1,219000,99.0,https://www.etuovi.com/kohde/21041052,02320, Espoo
-3,Aallonhuippu 3 A 4,185000,96.5,https://www.etuovi.com/kohde/21060847,02320, Espoo
-4,Maininkitie 9,202000,102.0,https://www.etuovi.com/kohde/21445128,02320, Espoo
-5,Yläkartanontie 20,246000,99.0,https://www.etuovi.com/kohde/20851887,02360, Espoo
-6,Maininkitie 14 B 32,268629,98.0,https://www.etuovi.com/kohde/q77697,02320, Espoo
-7,Ristiaallokonkatu 4,229000,94.0,https://www.etuovi.com/kohde/20734044,02320, Espoo
-8,Maininkitie 16,279000,98.0,https://www.etuovi.com/kohde/21914779,02320, Espoo
-9,Jälkimaininki 9,285000,75.0,https://www.etuovi.com/kohde/1294744,00000, Espoo
-10,Soukan rantatie 8,329000,79.5,https://www.etuovi.com/kohde/21510332,02360, Espoo
-11,Kivenlahdenkatu 10,195000,99.0,https://www.etuovi.com/kohde/20310198,02320, Espoo
-12,Alakartanontie 6,289000,99.5,https://www.etuovi.com/kohde/21212094,02360, Espoo
-13,Krattivuorentie 12,338500,87.0,https://www.etuovi.com/kohde/21251093,02320, Espoo
-14,Soukankuja 2,249000,100.0,https://www.etuovi.com/kohde/20321157,02360, Espoo
-15,Sepetlahdentie 10,225000,94.0,https://www.etuovi.com/kohde/20901831,02230, Espoo
-16,Merivalkama 4 C,227000,100.0,https://www.etuovi.com/kohde/q44949,02320, Espoo
-17,Kalastajanmäki 5,275000,78.5,https://www.etuovi.com/kohde/20727616,02230, Espoo
-18,Maininkitie 12,283000,98.0,https://www.etuovi.com/kohde/q43392,02320, Espoo
+,Osoite,Vmh,Pinta-ala,URL,Postinmr,Kaupunki,Neliöhinta
+0,Soukantie 15 E,269000,99.0,https://www.etuovi.com/kohde/7986667,02360, Espoo,2717.0
+1,Hirvisuontie 27 B,0,76.0,https://www.etuovi.com/kohde/502277,02810, Espoo,0.0
+2,Nuuniitynkuja 1,295000,87.0,https://www.etuovi.com/kohde/1297651,02710, Espoo,3391.0
+3,Savutie 14 A,325000,130.0,https://www.etuovi.com/kohde/7986912,02770, Espoo,2500.0
+4,Kaurakaski 6 as,278000,83.0,https://www.etuovi.com/kohde/7986447,02340, Espoo,3349.0
+5,Taka-Niipperin tie 12 A,290000,210.0,https://www.etuovi.com/kohde/21072735,02970, Espoo,1381.0
+6,Niittykuja 2,335000,106.5,https://www.etuovi.com/kohde/21757730,02200, Espoo,3146.0
+7,Oksakarhinmäki 4,279000,98.0,https://www.etuovi.com/kohde/20239731,02340, Espoo,2847.0
+8,Kirstintie 3 B 42,198000,95.5,https://www.etuovi.com/kohde/q92626,02760, Espoo,2073.0
+9,Kaskenpolttajantie 7,344000,103.5,https://www.etuovi.com/kohde/21345365,02340, Espoo,3324.0
+10,Kirstinsyrjä 6,195000,95.0,https://www.etuovi.com/kohde/20945853,02760, Espoo,2053.0
+11,Aallonhuippu 3,230000,117.5,https://www.etuovi.com/kohde/2234852,02320, Espoo,1957.0
+12,Porarinkatu 5,339000,85.5,https://www.etuovi.com/kohde/21460556,02650, Espoo,3965.0
+13,Tammihaantie 2,228000,119.0,https://www.etuovi.com/kohde/20693572,02940, Espoo,1916.0
+14,Lansantie 23,275000,90.0,https://www.etuovi.com/kohde/21823814,02630, Espoo,3056.0
+15,Heinjoenpolku 1 A,208000,89.0,https://www.etuovi.com/kohde/7974869,02140, Espoo,2337.0
+16,Kirstinmäki 1,185000,94.0,https://www.etuovi.com/kohde/20576228,02760, Espoo,1968.0
+17,Törmäniityntie 15,209000,90.5,https://www.etuovi.com/kohde/21645202,02710, Espoo,2309.0
+18,Nuumäentie 9,279000,96.5,https://www.etuovi.com/kohde/21982593,02710, Espoo,2891.0
+19,Soukankaari 1 B 29,319000,97.0,https://www.etuovi.com/kohde/q87362,02360, Espoo,3289.0
+20,Maininkitie 16,269000,98.0,https://www.etuovi.com/kohde/21914779,02320, Espoo,2745.0
+21,Täysikuu 10 A,218000,90.5,https://www.etuovi.com/kohde/7981760,02210, Espoo,2409.0
+22,Humisevanportti 4,219000,104.0,https://www.etuovi.com/kohde/1296611,02710, Espoo,2106.0
+23,Tornihaukantie 4,258000,105.0,https://www.etuovi.com/kohde/1296429,02620, Espoo,2457.0
+24,Ylistörmä 5,237000,82.0,https://www.etuovi.com/kohde/1296385,02210, Espoo,2890.0
+25,Sunanniitynkuja 4,299000,92.5,https://www.etuovi.com/kohde/q84877,02760, Espoo,3232.0
+26,Puosunrinne 3,219500,94.0,https://www.etuovi.com/kohde/20292548,02320, Espoo,2335.0
+27,Viherkalliontie 1,294000,102.0,https://www.etuovi.com/kohde/21025179,02710, Espoo,2882.0
+28,Isoistenkuja 4,335000,99.0,https://www.etuovi.com/kohde/21050427,02200, Espoo,3384.0
+29,Aallonhuippu 3 A 4,185000,96.5,https://www.etuovi.com/kohde/21060847,02320, Espoo,1917.0
